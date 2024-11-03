@@ -5,61 +5,362 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gabriel Henrique - IAM Security Professional</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         :root {
-            --primary: #ff0000; --accent: #ff3333; --bg-dark: #000; --text-dark: #fff;
-            --bg-light: #f9f9f9; --text-light: #333; --card-dark: #111; --card-light: #fff;
+            --primary: #ff0000;
+            --accent: #ff3333;
+            --bg-dark: #000;
+            --text-dark: #fff;
+            --bg-light: #f9f9f9;
+            --text-light: #333;
+            --card-dark: #111;
+            --card-light: #fff;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', monospace; }
-        body { background-color: var(--bg-dark); color: var(--text-dark); transition: 0.3s; }
-        .light-mode { background-color: var(--bg-light); color: var(--text-light); }
-        .hero, .projects, .contact { padding: 2rem; text-align: center; }
-        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-        .name { font-size: 4rem; background: linear-gradient(to right, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .skills-container { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0; }
-        .skill { padding: 0.5rem 1rem; border: 1px solid var(--primary); border-radius: 5px; cursor: pointer; transition: 0.3s; }
-        .light-mode .skill { background: var(--card-light); }
-        .projects { background: var(--card-dark); transition: 0.3s; }
-        .light-mode .projects { background: var(--card-light); }
-        .project-grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-        .project-card { padding: 1.5rem; border: 1px solid var(--primary); border-radius: 5px; opacity: 0; transform: translateY(20px); }
-        .contact { border-top: 1px solid var(--primary); }
-        .btn { padding: 1rem 2rem; border: 2px solid var(--primary); border-radius: 5px; cursor: pointer; transition: 0.3s; }
-        @media (max-width: 768px) { .name { font-size: 3rem; } }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+            transition: 0.3s;
+            overflow-x: hidden;
+        }
+
+        .light-mode {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, var(--primary) 0%, transparent 35%);
+            opacity: 0.1;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .name-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .name {
+            font-size: 4rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .name::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0.5;
+            filter: blur(20px);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { filter: blur(20px) brightness(1); }
+            100% { filter: blur(25px) brightness(1.5); }
+        }
+
+        .skills-container {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2rem 0;
+            perspective: 1000px;
+        }
+
+        .skill {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--primary);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 0, 0, 0.1);
+        }
+
+        .skill:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        .skill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .skill:hover::before {
+            left: 100%;
+        }
+
+        .projects {
+            padding: 4rem 2rem;
+            background: var(--card-dark);
+            position: relative;
+        }
+
+        .project-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            padding: 1.5rem;
+            border: 1px solid var(--primary);
+            border-radius: 5px;
+            background: rgba(255, 0, 0, 0.05);
+            backdrop-filter: blur(5px);
+            transform-style: preserve-3d;
+            transition: 0.5s;
+        }
+
+        .project-card:hover {
+            transform: translateZ(20px) rotateX(10deg) rotateY(10deg);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+        }
+
+        .contact {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: 2px solid var(--primary);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            margin: 2rem 0;
+            text-decoration: none;
+            color: var(--text-dark);
+            background: transparent;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+            box-shadow: 0 0 30px var(--primary);
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .controls button, .controls select {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--primary);
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--text-dark);
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+        }
+
+        @media (max-width: 768px) {
+            .name {
+                font-size: 3rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <section class="hero"><h1 class="name">Gabriel Henrique</h1></section>
+    <section class="hero">
+        <div class="name-container">
+            <h1 class="name" data-text="Gabriel Henrique">Gabriel Henrique</h1>
+        </div>
+    </section>
     <div class="skills-container">
-        <span class="skill">IAM</span><span class="skill">Zero Trust</span><span class="skill">OAuth 2.0</span><span class="skill">SAML</span><span class="skill">MFA</span>
-        <span class="skill">SSO</span><span class="skill">RBAC</span><span class="skill">AWS IAM</span><span class="skill">Azure AD</span><span class="skill">Okta</span>
+        <span class="skill">IAM</span>
+        <span class="skill">Zero Trust</span>
+        <span class="skill">OAuth 2.0</span>
+        <span class="skill">SAML</span>
+        <span class="skill">MFA</span>
+        <span class="skill">SSO</span>
+        <span class="skill">RBAC</span>
+        <span class="skill">AWS IAM</span>
+        <span class="skill">Azure AD</span>
+        <span class="skill">Okta</span>
     </div>
-    <section class="projects"><h2>Implementações de Segurança</h2>
+    <section class="projects">
+        <h2>Implementações de Segurança</h2>
         <div class="project-grid">
-            <div class="project-card"><h3>Arquitetura IAM Corporativa</h3><p>Solução IAM abrangente com SSO e MFA, reduzindo incidentes em 75%.</p></div>
-            <div class="project-card"><h3>Modelo Zero Trust</h3><p>Implementação de Zero Trust, garantindo verificação de identidade.</p></div>
-            <div class="project-card"><h3>Integração IAM Multi-nuvem</h3><p>Estratégia IAM para AWS, Azure e GCP com monitoramento contínuo.</p></div>
-            <div class="project-card"><h3>Gerenciamento de Identidades</h3><p>Políticas adaptativas para gestão de permissões seguras.</p></div>
-            <div class="project-card"><h3>Análise de Acesso com IA</h3><p>Análise em tempo real para prevenção de ameaças.</p></div>
+            <div class="project-card">
+                <h3>Arquitetura IAM Corporativa</h3>
+                <p>Solução IAM abrangente com SSO e MFA, reduzindo incidentes em 75%.</p>
+            </div>
+            <div class="project-card">
+                <h3>Modelo Zero Trust</h3>
+                <p>Implementação de Zero Trust, garantindo verificação de identidade.</p>
+            </div>
+            <div class="project-card">
+                <h3>Integração IAM Multi-nuvem</h3>
+                <p>Estratégia IAM para AWS, Azure e GCP com monitoramento contínuo.</p>
+            </div>
+            <div class="project-card">
+                <h3>Gerenciamento de Identidades</h3>
+                <p>Políticas adaptativas para gestão de permissões seguras.</p>
+            </div>
+            <div class="project-card">
+                <h3>Análise de Acesso com IA</h3>
+                <p>Análise em tempo real para prevenção de ameaças.</p>
+            </div>
         </div>
     </section>
     <section class="contact">
         <h2>Proteja sua Infraestrutura de Identidade</h2>
         <a href="mailto:gabriel.henrijess@gmail.com" class="btn">Iniciar Contato</a>
-        <button onclick="toggleTheme()">Tema</button>
-        <select onchange="changeLang(this.value)"><option value="en">EN</option><option value="pt" selected>PT</option><option value="es">ES</option></select>
     </section>
+    <div class="controls">
+        <button onclick="toggleTheme()">Tema</button>
+        <select onchange="changeLang(this.value)">
+            <option value="en">EN</option>
+            <option value="pt" selected>PT</option>
+            <option value="es">ES</option>
+        </select>
+    </div>
     <script>
-        gsap.to(".project-card", { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: "power2.out" });
-        function toggleTheme() { document.body.classList.toggle("light-mode"); }
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Initialize GSAP animations
+        gsap.from(".name", {
+            duration: 2,
+            opacity: 0,
+            y: 100,
+            ease: "power4.out",
+            clearProps: "all"
+        });
+
+        // Animate skills with stagger
+        gsap.from(".skill", {
+            duration: 0.8,
+            opacity: 0,
+            y: 50,
+            stagger: 0.1,
+            ease: "back.out(1.7)",
+            scrollTrigger: {
+                trigger: ".skills-container",
+                start: "top 80%"
+            }
+        });
+
+        // Animate project cards
+        gsap.from(".project-card", {
+            duration: 1,
+            opacity: 0,
+            y: 100,
+            stagger: 0.2,
+            ease: "power4.out",
+            scrollTrigger: {
+                trigger: ".project-grid",
+                start: "top 80%"
+            }
+        });
+
+        // Add hover effect to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        });
+
+        // Theme toggle function
+        function toggleTheme() {
+            document.body.classList.toggle("light-mode");
+        }
+
+        // Language change function
         function changeLang(lang) {
             const texts = {
-                en: { title: "IAM Security Specialist", projects: "Security Implementations", contact: "Secure Your Identity", btn: "Contact" },
-                pt: { title: "Especialista em Segurança IAM", projects: "Implementações de Segurança", contact: "Proteja sua Identidade", btn: "Iniciar Contato" },
-                es: { title: "Especialista en Seguridad IAM", projects: "Implementaciones de Seguridad", contact: "Protege tu Identidad", btn: "Iniciar Contacto" }
+                en: {
+                    title: "IAM Security Specialist",
+                    projects: "Security Implementations",
+                    contact: "Secure Your Identity Infrastructure",
+                    btn: "Contact"
+                },
+                pt: {
+                    title: "Especialista em Segurança IAM",
+                    projects: "Implementações de Segurança",
+                    contact: "Proteja sua Infraestrutura de Identidade",
+                    btn: "Iniciar Contato"
+                },
+                es: {
+                    title: "Especialista en Seguridad IAM",
+                    projects: "Implementaciones de Seguridad",
+                    contact: "Protege tu Infraestructura de Identidad",
+                    btn: "Iniciar Contacto"
+                }
             };
-            document.querySelector(".name").textContent = "Gabriel Henrique";
-            document.querySelector("h2").textContent = texts[lang].projects;
+
+            document.querySelector(".projects h2").textContent = texts[lang].projects;
             document.querySelector(".contact h2").textContent = texts[lang].contact;
             document.querySelector(".btn").textContent = texts[lang].btn;
         }
