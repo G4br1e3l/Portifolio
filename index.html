@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        .projeto {
+            background-color: #fff;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .projeto:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Meu Portfólio</h1>
+            <ul>
+                <li><a href="#sobre">Sobre Mim</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="sobre">
+            <h2>Sobre Mim</h2>
+            <p>Olá! Sou [Seu Nome], um [sua profissão]. Tenho experiência em [detalhes sobre suas habilidades] e sou apaixonado por criar soluções inovadoras.</p>
+        </section>
+        <section id="projetos">
+            <h2>Projetos</h2>
+            <div class="projeto">
+                <h3>Projeto 1</h3>
+                <p>Descrição do Projeto 1.</p>
+                <a href="#" target="_blank">Ver Projeto</a>
+            </div>
+            <div class="projeto">
+                <h3>Projeto 2</h3>
+                <p>Descrição do Projeto 2.</p>
+                <a href="#" target="_blank">Ver Projeto</a>
+            </div>
+            <!-- Adicione mais projetos conforme necessário -->
+        </section>
+        <section id="contato">
+            <h2>Contato</h2>
+            <p>Entre em contato comigo por e-mail: <a href="mailto:seuemail@example.com">seuemail@example.com</a></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 [Seu Nome]. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        // Exemplo de uma funcionalidade simples
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("Portfólio carregado com sucesso!");
+        });
+    </script>
+</body>
+</html>
