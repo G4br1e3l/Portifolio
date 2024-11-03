@@ -5,17 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gabriel Henrique - IAM Security Professional</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         :root {
             --primary: #ff0000;
+            --secondary: #800000;
             --accent: #ff3333;
-            --bg-dark: #000;
-            --text-dark: #fff;
-            --bg-light: #f9f9f9;
-            --text-light: #333;
-            --card-dark: #111;
-            --card-light: #fff;
+            --bg: #000000;
+            --text: #ffffff;
+            --card-bg: #111111;
         }
 
         * {
@@ -26,344 +23,380 @@
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-dark);
-            transition: 0.3s;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            position: relative;
             overflow-x: hidden;
         }
 
-        .light-mode {
-            background-color: var(--bg-light);
-            color: var(--text-light);
+        /* Animated background lines */
+        .background-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            opacity: 0.1;
+            pointer-events: none;
+            background: 
+                linear-gradient(90deg, var(--primary) 1px, transparent 1px) 0 0 / 50px 50px,
+                linear-gradient(0deg, var(--primary) 1px, transparent 1px) 0 0 / 50px 50px;
+            animation: moveBg 20s linear infinite;
+        }
+
+        @keyframes moveBg {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
         }
 
         .hero {
             min-height: 100vh;
+            padding: 2rem;
             display: flex;
             align-items: center;
-            justify-content: center;
             position: relative;
-            overflow: hidden;
+            background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(20,0,0,0.95) 100%);
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, var(--primary) 0%, transparent 35%);
-            opacity: 0.1;
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .name-container {
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
             position: relative;
             z-index: 1;
         }
 
         .name {
             font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
             background: linear-gradient(to right, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            position: relative;
+            text-shadow: 0 0 10px rgba(255,0,0,0.3);
+        }
+
+        .typing-container {
             display: inline-block;
         }
 
-        .name::after {
-            content: attr(data-text);
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            opacity: 0.5;
-            filter: blur(20px);
-            animation: glow 2s ease-in-out infinite alternate;
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: var(--primary);
+            margin-left: 4px;
+            animation: blink 1s infinite;
         }
 
-        @keyframes glow {
-            0% { filter: blur(20px) brightness(1); }
-            100% { filter: blur(25px) brightness(1.5); }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Glitch effect styles */
+        .glitch {
+            position: relative;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg);
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--primary);
+            animation: glitch-1 2s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: 2px 0 var(--accent);
+            animation: glitch-2 2s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-1 {
+            0%, 100% { clip-path: inset(50% 0 30% 0); }
+            20% { clip-path: inset(20% 0 60% 0); }
+            40% { clip-path: inset(70% 0 10% 0); }
+            60% { clip-path: inset(10% 0 80% 0); }
+            80% { clip-path: inset(30% 0 50% 0); }
+        }
+
+        @keyframes glitch-2 {
+            0%, 100% { clip-path: inset(40% 0 40% 0); }
+            20% { clip-path: inset(60% 0 20% 0); }
+            40% { clip-path: inset(20% 0 60% 0); }
+            60% { clip-path: inset(70% 0 10% 0); }
+            80% { clip-path: inset(10% 0 70% 0); }
+        }
+
+        .title {
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .skills-container {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
-            justify-content: center;
-            margin: 2rem 0;
-            perspective: 1000px;
+            margin-bottom: 2rem;
         }
 
         .skill {
             padding: 0.5rem 1rem;
+            background: var(--card-bg);
+            color: var(--primary);
             border: 1px solid var(--primary);
             border-radius: 5px;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-            background: rgba(255, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
         }
 
         .skill:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 0 20px var(--primary);
-        }
-
-        .skill::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .skill:hover::before {
-            left: 100%;
+            background: var(--primary);
+            color: var(--bg);
+            box-shadow: 0 0 15px var(--primary);
         }
 
         .projects {
             padding: 4rem 2rem;
-            background: var(--card-dark);
+            max-width: 1200px;
+            margin: 0 auto;
             position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
         .project-grid {
             display: grid;
-            gap: 2rem;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            margin-top: 2rem;
+            gap: 2rem;
         }
 
         .project-card {
-            padding: 1.5rem;
+            background: var(--card-bg);
             border: 1px solid var(--primary);
             border-radius: 5px;
-            background: rgba(255, 0, 0, 0.05);
-            backdrop-filter: blur(5px);
-            transform-style: preserve-3d;
-            transition: 0.5s;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
         }
 
         .project-card:hover {
-            transform: translateZ(20px) rotateX(10deg) rotateY(10deg);
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(255,0,0,0.3);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
         }
 
         .contact {
             padding: 4rem 2rem;
+            background: var(--card-bg);
+            color: var(--text);
             text-align: center;
-            border-top: 1px solid var(--primary);
             position: relative;
-            overflow: hidden;
+            z-index: 1;
+            border-top: 1px solid var(--primary);
         }
 
-        .btn {
+        .contact-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .contact-btn {
+            display: inline-block;
             padding: 1rem 2rem;
+            background: transparent;
+            color: var(--primary);
+            text-decoration: none;
             border: 2px solid var(--primary);
             border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-            display: inline-block;
-            margin: 2rem 0;
-            text-decoration: none;
-            color: var(--text-dark);
-            background: transparent;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .btn:hover {
+        .contact-btn:hover {
             background: var(--primary);
-            transform: scale(1.1);
-            box-shadow: 0 0 30px var(--primary);
-        }
-
-        .controls {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            display: flex;
-            gap: 1rem;
-            z-index: 100;
-        }
-
-        .controls button, .controls select {
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--primary);
-            border-radius: 5px;
-            background: rgba(0, 0, 0, 0.5);
-            color: var(--text-dark);
-            cursor: pointer;
-            backdrop-filter: blur(5px);
+            color: var(--bg);
+            box-shadow: 0 0 20px var(--primary);
         }
 
         @media (max-width: 768px) {
             .name {
                 font-size: 3rem;
             }
+            
+            .title {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="background-lines"></div>
     <section class="hero">
-        <div class="name-container">
-            <h1 class="name" data-text="Gabriel Henrique">Gabriel Henrique</h1>
+        <div class="hero-content">
+            <h1 class="name">
+                Gabriel <span class="typing-container"></span>
+                <span class="cursor"></span>
+            </h1>
+            <h2 class="title">Identity & Access Management Security Specialist</h2>
+            <div class="skills-container">
+                <span class="skill">IAM</span>
+                <span class="skill">Zero Trust</span>
+                <span class="skill">OAuth 2.0</span>
+                <span class="skill">SAML</span>
+                <span class="skill">MFA</span>
+                <span class="skill">SSO</span>
+                <span class="skill">RBAC</span>
+                <span class="skill">AWS IAM</span>
+                <span class="skill">Azure AD</span>
+                <span class="skill">Okta</span>
+            </div>
         </div>
     </section>
-    <div class="skills-container">
-        <span class="skill">IAM</span>
-        <span class="skill">Zero Trust</span>
-        <span class="skill">OAuth 2.0</span>
-        <span class="skill">SAML</span>
-        <span class="skill">MFA</span>
-        <span class="skill">SSO</span>
-        <span class="skill">RBAC</span>
-        <span class="skill">AWS IAM</span>
-        <span class="skill">Azure AD</span>
-        <span class="skill">Okta</span>
-    </div>
+
     <section class="projects">
-        <h2>Implementações de Segurança</h2>
+        <h2 class="section-title">Security Implementations</h2>
         <div class="project-grid">
             <div class="project-card">
-                <h3>Arquitetura IAM Corporativa</h3>
-                <p>Solução IAM abrangente com SSO e MFA, reduzindo incidentes em 75%.</p>
+                <h3 class="project-title">Enterprise IAM Architecture</h3>
+                <p>Designed and implemented a comprehensive IAM solution for a Fortune 500 company, including SSO, MFA, and privileged access management. Reduced security incidents by 75%.</p>
             </div>
             <div class="project-card">
-                <h3>Modelo Zero Trust</h3>
-                <p>Implementação de Zero Trust, garantindo verificação de identidade.</p>
+                <h3 class="project-title">Zero Trust Implementation</h3>
+                <p>Led the transition to a Zero Trust security model, implementing strict identity verification for every person and device. Enhanced security posture while maintaining operational efficiency.</p>
             </div>
             <div class="project-card">
-                <h3>Integração IAM Multi-nuvem</h3>
-                <p>Estratégia IAM para AWS, Azure e GCP com monitoramento contínuo.</p>
-            </div>
-            <div class="project-card">
-                <h3>Gerenciamento de Identidades</h3>
-                <p>Políticas adaptativas para gestão de permissões seguras.</p>
-            </div>
-            <div class="project-card">
-                <h3>Análise de Acesso com IA</h3>
-                <p>Análise em tempo real para prevenção de ameaças.</p>
+                <h3 class="project-title">Cloud IAM Integration</h3>
+                <p>Orchestrated multi-cloud IAM strategy across AWS, Azure, and GCP. Implemented automated access controls and continuous compliance monitoring.</p>
             </div>
         </div>
     </section>
+
     <section class="contact">
-        <h2>Proteja sua Infraestrutura de Identidade</h2>
-        <a href="mailto:gabriel.henrijess@gmail.com" class="btn">Iniciar Contato</a>
+        <h2 class="contact-title">Secure Your Identity Infrastructure</h2>
+        <p>Looking for expert IAM solutions? Let's enhance your security posture.</p>
+        <a href="mailto:gabriel.henrijess@gmail.com" class="contact-btn">Initialize Contact</a>
     </section>
-    <div class="controls">
-        <button onclick="toggleTheme()">Tema</button>
-        <select onchange="changeLang(this.value)">
-            <option value="en">EN</option>
-            <option value="pt" selected>PT</option>
-            <option value="es">ES</option>
-        </select>
-    </div>
+
     <script>
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Initialize GSAP animations
-        gsap.from(".name", {
-            duration: 2,
-            opacity: 0,
-            y: 100,
-            ease: "power4.out",
-            clearProps: "all"
-        });
-
-        // Animate skills with stagger
-        gsap.from(".skill", {
-            duration: 0.8,
-            opacity: 0,
-            y: 50,
-            stagger: 0.1,
-            ease: "back.out(1.7)",
-            scrollTrigger: {
-                trigger: ".skills-container",
-                start: "top 80%"
-            }
-        });
-
-        // Animate project cards
-        gsap.from(".project-card", {
+        // GSAP Animations
+        gsap.to(".hero-content", {
+            opacity: 1,
+            y: 0,
             duration: 1,
-            opacity: 0,
-            y: 100,
-            stagger: 0.2,
-            ease: "power4.out",
-            scrollTrigger: {
-                trigger: ".project-grid",
-                start: "top 80%"
-            }
+            ease: "power2.out"
         });
 
-        // Add hover effect to project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-            });
-        });
-
-        // Theme toggle function
-        function toggleTheme() {
-            document.body.classList.toggle("light-mode");
-        }
-
-        // Language change function
-        function changeLang(lang) {
-            const texts = {
-                en: {
-                    title: "IAM Security Specialist",
-                    projects: "Security Implementations",
-                    contact: "Secure Your Identity Infrastructure",
-                    btn: "Contact"
-                },
-                pt: {
-                    title: "Especialista em Segurança IAM",
-                    projects: "Implementações de Segurança",
-                    contact: "Proteja sua Infraestrutura de Identidade",
-                    btn: "Iniciar Contato"
-                },
-                es: {
-                    title: "Especialista en Seguridad IAM",
-                    projects: "Implementaciones de Seguridad",
-                    contact: "Protege tu Infraestructura de Identidad",
-                    btn: "Iniciar Contacto"
+        // Animate project cards on scroll
+        const projectCards = document.querySelectorAll('.project-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    gsap.to(entry.target, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        ease: "power2.out"
+                    });
                 }
-            };
+            });
+        }, { threshold: 0.1 });
+        projectCards.forEach(card => observer.observe(card));
 
-            document.querySelector(".projects h2").textContent = texts[lang].projects;
-            document.querySelector(".contact h2").textContent = texts[lang].contact;
-            document.querySelector(".btn").textContent = texts[lang].btn;
+        // Typing effect with glitch for "Henrique"
+        const words = ['Henrique', 'H3nrique', 'Henr1que', 'Henr1qu3', 'Henrique'];
+        const typingContainer = document.querySelector('.typing-container');
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isGlitching = false;
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                charIndex--;
+                typingContainer.textContent = currentWord.substring(0, charIndex);
+            } else {
+                charIndex++;
+                typingContainer.textContent = currentWord.substring(0, charIndex);
+            }
+
+            if (Math.random() < 0.1 && !isGlitching) {
+                isGlitching = true;
+                typingContainer.classList.add('glitch');
+                typingContainer.setAttribute('data-text', typingContainer.textContent);
+                setTimeout(() => {
+                    typingContainer.classList.remove('glitch');
+                    isGlitching = false;
+                }, 200);
+            }
+
+            let typingSpeed = isDeleting ? 100 : 200;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                if (wordIndex === words.length - 1) {
+                    setTimeout(() => isDeleting = true, 2000);
+                } else {
+                    setTimeout(() => { isDeleting = true; }, 500);
+                }
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+            }
+
+            setTimeout(typeEffect, typingSpeed);
         }
+        setTimeout(typeEffect, 1000);
+
+        // Skill hover effect with scale and shadow
+        const skills = document.querySelectorAll('.skill');
+        skills.forEach(skill => {
+            skill.addEventListener('mouseover', () => {
+                gsap.to(skill, { scale: 1.1, duration: 0.3, boxShadow: '0 0 20px var(--primary)' });
+            });
+            skill.addEventListener('mouseout', () => {
+                gsap.to(skill, { scale: 1, duration: 0.3, boxShadow: 'none' });
+            });
+        });
     </script>
 </body>
 </html>
