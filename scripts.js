@@ -68,31 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Substituir a seção do efeito de digitação por este novo código
-const letters = ['e', 's', '!', 'e', '4', 'c', 'u', 'r', 'i', 'r', 't', 'y', 'e'];
-const lastLetterElement = document.querySelector('.last-letter');
-let letterIndex = 0;
-let isGlitching = false;
-
-function typeEffect() {
-    const currentLetter = letters[letterIndex];
-    lastLetterElement.textContent = currentLetter;
-
-    if (Math.random() < 0.1 && !isGlitching) {
-        isGlitching = true;
-        lastLetterElement.classList.add('glitch');
-        setTimeout(() => {
-            lastLetterElement.classList.remove('glitch');
-            isGlitching = false;
-        }, 200);
-    }
-
-    letterIndex = (letterIndex + 1) % letters.length;
-    setTimeout(typeEffect, 300);
-}
-
-setTimeout(typeEffect, 1000);
-
 // Security Lab Simulation
 class SecurityLab {
     constructor() {
@@ -419,147 +394,25 @@ class SecurityLab {
                 'rgba(255, 0, 0, 0.7)';
         });
     }
+
+    reset() {
+        this.createNodes();
+        const logContent = document.querySelector('.log-content');
+        if (logContent) {
+            logContent.innerHTML = '';
+        }
+    }
 }
 
 // Inicializar Security Lab quando a página carregar
 document.addEventListener('DOMContentLoaded', () => {
     const securityLab = new SecurityLab();
     const firewallSim = new FirewallSimulation();
-});
-
-// Modificar a parte do blog no final do arquivo
-document.addEventListener('DOMContentLoaded', function() {
-    const blogGrid = document.querySelector('.blog-grid');
-    const nextBtn = document.querySelector('.blog-nav-btn.next');
-    const hiddenCard = document.querySelector('.blog-card.hidden');
-    const visibleCards = document.querySelectorAll('.blog-card:not(.hidden)');
-    let isExpanded = false;
-
-    nextBtn.addEventListener('click', function() {
-        if (!isExpanded) {
-            // Expandir grid
-            hiddenCard.classList.add('show');
-
-            // Timeline para expansão
-            gsap.timeline({
-                    defaults: {
-                        duration: 0.6,
-                        ease: "power3.inOut"
-                    }
-                })
-                .set(hiddenCard, {
-                    display: 'block',
-                    opacity: 0,
-                    scale: 0.8,
-                    x: 50
-                })
-                .to(blogGrid, {
-                    gridTemplateColumns: 'repeat(3, 1fr)',
-                    duration: 0.4,
-                    ease: "power2.inOut"
-                })
-                .to(visibleCards, {
-                    x: -20,
-                    scale: 0.98,
-                    stagger: 0.1,
-                    duration: 0.4
-                }, "<")
-                .to(hiddenCard, {
-                    opacity: 1,
-                    scale: 1,
-                    x: 0,
-                    duration: 0.4
-                }, "-=0.3")
-                .to(visibleCards, {
-                    x: 0,
-                    scale: 1,
-                    stagger: 0.1,
-                    duration: 0.4
-                }, "-=0.2");
-
-            // Animar o botão
-            gsap.to(nextBtn, {
-                rotate: 180,
-                duration: 0.4,
-                ease: "back.out(1.7)"
-            });
-
-        } else {
-            // Timeline para recolhimento
-            gsap.timeline({
-                    defaults: {
-                        duration: 0.6,
-                        ease: "power3.inOut"
-                    }
-                })
-                .to(hiddenCard, {
-                    opacity: 0,
-                    scale: 0.8,
-                    x: 50,
-                    duration: 0.4
-                })
-                .to(visibleCards, {
-                    x: 20,
-                    scale: 0.98,
-                    stagger: 0.1,
-                    duration: 0.4
-                }, "<")
-                .to(blogGrid, {
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    duration: 0.4,
-                    onComplete: () => {
-                        hiddenCard.classList.remove('show');
-                    }
-                }, "-=0.2")
-                .to(visibleCards, {
-                    x: 0,
-                    scale: 1,
-                    stagger: 0.1,
-                    duration: 0.4
-                }, "-=0.2");
-
-            // Animar o botão de volta
-            gsap.to(nextBtn, {
-                rotate: 0,
-                duration: 0.4,
-                ease: "back.out(1.7)"
-            });
-        }
-
-        isExpanded = !isExpanded;
-    });
-
-    // Ajuste responsivo melhorado
-    function checkResponsive() {
-        if (window.innerWidth <= 768) {
-            gsap.set(blogGrid, {
-                gridTemplateColumns: '1fr',
-                duration: 0
-            });
-            if (isExpanded) {
-                gsap.set(hiddenCard, {
-                    gridColumn: 'auto',
-                    duration: 0
-                });
-            }
-        } else {
-            gsap.set(blogGrid, {
-                gridTemplateColumns: isExpanded ? 'repeat(3, 1fr)' : 'repeat(2, 1fr)',
-                duration: 0
-            });
-            if (isExpanded) {
-                gsap.set(hiddenCard, {
-                    gridColumn: '3',
-                    duration: 0
-                });
-            }
-        }
+    const resetBtn = document.getElementById('resetLab');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => securityLab.reset());
     }
-
-    window.addEventListener('resize', checkResponsive);
 });
-
-// Adicione este código ao final do arquivo scripts.js
 
 class FirewallSimulation {
     constructor() {
@@ -718,11 +571,3 @@ class FirewallSimulation {
         }, 1000);
     }
 }
-
-// Inicializar simulação quando a página carregar
-document.addEventListener('DOMContentLoaded', () => {
-    const securityLab = new SecurityLab();
-    const firewallSim = new FirewallSimulation();
-});
-
-// Adicione esta animação ao seu CSS
