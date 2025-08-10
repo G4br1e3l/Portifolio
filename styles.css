@@ -30,6 +30,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -128,6 +132,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
+    padding-top: 4rem;
 }
 
 .background-lines {
@@ -142,6 +147,30 @@ body {
     background: linear-gradient(90deg, var(--text-primary) 1px, transparent 1px) 0 0, linear-gradient(0deg, var(--text-primary) 1px, transparent 1px) 0 0;
     background-size: 30px 30px;
     animation: backgroundShift 30s linear infinite;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.navbar a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.navbar a:hover {
+    color: var(--primary-color);
 }
 
 .background-lines::before {
