@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,6 @@
     <link rel="stylesheet" href="./styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
-
 <body>
     <div class="background-lines"></div>
     <nav class="navbar">
@@ -17,6 +15,11 @@
         <a href="#experience" data-i18n="nav_experience">Experience</a>
         <a href="#lab" data-i18n="nav_lab">Security Lab</a>
         <a href="#contact" data-i18n="nav_contact">Contact</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#lab">Security Lab</a>
+        <a href="#contact">Contact</a>
     </nav>
     <section class="hero" id="hero">
         <div class="hero-content">
@@ -36,9 +39,9 @@
             </div>
         </div>
     </section>
-
     <section class="projects" id="projects">
         <h2 class="section-title" data-i18n="projects_title">Security Implementations</h2>
+        <h2 class="section-title">Security Implementations</h2>
         <div class="project-grid">
             <div class="project-card" data-skills="iam,zero trust,oauth 2.0">
                 <h3 class="project-title">IAM</h3>
@@ -54,9 +57,9 @@
             </div>
         </div>
     </section>
-
     <section class="experience" id="experience">
         <h2 class="section-title" data-i18n="experience_title">Professional Journey</h2>
+        <h2 class="section-title">Professional Journey</h2>
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
@@ -78,7 +81,35 @@
             </div>
         </div>
     </section>
-
+    <section class="certifications" id="certifications">
+        <h2 class="section-title">Security Certifications</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <div class="cert-icon">🔐</div>
+                <h3>CISSP</h3>
+                <p>Certified Information Systems Security Professional</p>
+                <span class="cert-date">Skillsoft</span>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">🛡️</div>
+                <h3>CCSP</h3>
+                <p>Cloud Security Professional</p>
+                <span class="cert-date">Skillsoft</span>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">🌐</div>
+                <h3>Google Cloud</h3>
+                <p>Cloud Engineering Essentials</p>
+                <span class="cert-date">Google</span>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">💻</div>
+                <h3>CompTIA</h3>
+                <p>Security+ & Linux+</p>
+                <span class="cert-date">CompTIA</span>
+            </div>
+        </div>
+    </section>
     <section class="statistics">
         <div class="stats-container">
             <div class="stat-item">
@@ -91,10 +122,40 @@
             </div>
         </div>
     </section>
-
     <section class="security-lab" id="lab">
         <h2 class="section-title" data-i18n="lab_title">Practical Experiment of Security Lab</h2>
         <p class="lab-description" data-i18n="lab_description">Interact with a simulated network and test security rules in real time. Reset the environment anytime.</p>
+    <section class="blog" id="blog">
+        <h2 class="section-title">Security Insights</h2>
+        <div class="blog-grid">
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('./zero-trust.jpeg')"></div>
+                <div class="blog-content">
+                    <h3>Zero Trust Architecture: A Modern Approach</h3>
+                    <p>Exploring the principles and implementation of Zero Trust security models...</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('./mfa.png')"></div>
+                <div class="blog-content">
+                    <h3>The Future of MFA</h3>
+                    <p>Breaking down advanced authentication methods and their security implications...</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('./cloud.jpg')"></div>
+                <div class="blog-content">
+                    <h3>Cloud IAM Best Practices</h3>
+                    <p>Essential strategies for managing identity and access in multi-cloud environments...</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+        </div>
+    </section>
+    <section class="security-lab" id="lab">
+        <h2 class="section-title">Practical Experiment of Security Lab</h2>
         <div class="lab-container">
             <div class="lab-visualization">
                 <div class="network-map">
@@ -130,7 +191,6 @@
                     <button class="control-btn" id="resetLab" data-i18n="reset_lab">Reset Simulation</button>
                 </div>
             </div>
-
             <div class="firewall-controls">
                 <div class="firewall-status">
                     <h3 data-i18n="firewall_status">Firewall Status</h3>
@@ -157,15 +217,15 @@
             </div>
         </div>
     </section>
-
     <section class="contact" id="contact">
         <h2 class="contact-title" data-i18n="contact_title">Secure Your Identity and Access</h2>
         <p data-i18n="contact_text">Looking for IAM solutions? Let's enhance your security posture.</p>
         <a href="mailto:gabriel.henrijess@gmail.com" class="contact-btn" data-i18n="contact_button">Initialize Contact</a>
+        <h2 class="contact-title">Secure Your Identity and Access</h2>
+        <p>Looking for IAM solutions? Let's enhance your security posture.</p>
+        <a href="mailto:gabriel.henrijess@gmail.com" class="contact-btn">Initialize Contact</a>
     </section>
-
     <script src="./lang.js"></script>
     <script src="./scripts.js"></script>
 </body>
-
 </html>
