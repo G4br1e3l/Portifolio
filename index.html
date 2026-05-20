@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriel Henrique - IAM & Systems Analyst</title>
+    <link rel="icon" type="image/x-icon" href="./main.ico">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">GH</div>
+        <div class="nav-links">
+            <a href="#about" data-nav="about">About</a>
+            <a href="#experience" data-nav="experience">Experience</a>
+            <a href="#skills" data-nav="skills">Skills</a>
+            <a href="#certifications" data-nav="certifications">Certifications</a>
+            <a href="#contact" data-nav="contact">Contact</a>
+        </div>
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="pt">PT</button>
+            <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+    </nav>
+
+    <main id="page-content"></main>
+
+    <template id="page-template-en">
+<section class="hero" id="hero">
+    <div class="hero-content">
+        <p class="hero-greeting">Hello, I'm</p>
+        <h1 class="hero-name">Gabriel</h1>
+        <h2 class="hero-title">Identity & Access Management Analyst</h2>
+        <p class="hero-subtitle">Systems Analyst focused on IAM, Active Directory, Entra ID, PowerShell Automation, and Access Governance in enterprise environments.</p>
+        <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Get in Touch</a>
+            <a href="#experience" class="btn btn-secondary">View Experience</a>
+        </div>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p>I'm a Systems Analyst with focus on Identity and Access Management (IAM), Active Directory, Entra ID/Azure AD, PowerShell automation, and support for corporate infrastructure and security environments.</p>
+            <p>My work involves access administration and analysis routines, Active Directory group validation, user movement between OUs, account creation and blocking, attribute analysis, account status verification, authentication troubleshooting, permissions, server access, and integration between Entra ID and on-premises AD.</p>
+            <p>I have hands-on experience with ServiceNow, especially in ticket handling, request analysis, access rule validation, and operational flow automation. I developed an internal application that uses ServiceNow ticket data to guide actions, execute PowerShell commands, reduce manual tasks, and help close tickets more efficiently.</p>
+            <p>My differentiator is the combination of operations, automation, and governance vision. I transform repetitive processes into organized, secure, and scalable solutions applying PowerShell, IAM best practices, group analysis, permissions, OU structure, and least privilege principles.</p>
+        </div>
+    </div>
+</section>
+
+<section class="experience" id="experience">
+    <div class="container">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <h3>Identity Management Analyst</h3>
+                        <span class="timeline-date">2023 - Present</span>
+                    </div>
+                    <h4 class="timeline-company">DXC Technology</h4>
+                    <ul class="timeline-details">
+                        <li>Administration and governance of identities in Active Directory and Entra ID</li>
+                        <li>PowerShell automation for user provisioning, deprovisioning, and access reviews</li>
+                        <li>ServiceNow ticket analysis and operational flow automation</li>
+                        <li>Security group management, OU structure, and least privilege enforcement</li>
+                        <li>Developed internal tool integrating ServiceNow data with PowerShell execution</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <h3>User Access Management Intern</h3>
+                        <span class="timeline-date">2021 - 2023</span>
+                    </div>
+                    <h4 class="timeline-company">DXC Technology</h4>
+                    <ul class="timeline-details">
+                        <li>Managed IAM infrastructure for 5,000+ users</li>
+                        <li>Account creation, blocking, and attribute management in Active Directory</li>
+                        <li>Authentication troubleshooting and server access support</li>
+                        <li>Access request validation and group membership management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="skills" id="skills">
+    <div class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Identity & Access</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Active Directory</span>
+                    <span class="skill-tag">Entra ID / Azure AD</span>
+                    <span class="skill-tag">IAM</span>
+                    <span class="skill-tag">Access Governance</span>
+                    <span class="skill-tag">User Provisioning</span>
+                    <span class="skill-tag">User Deprovisioning</span>
+                    <span class="skill-tag">Least Privilege</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Infrastructure & Security</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Security Groups</span>
+                    <span class="skill-tag">Group Membership</span>
+                    <span class="skill-tag">OUs</span>
+                    <span class="skill-tag">Server Access</span>
+                    <span class="skill-tag">Permissions</span>
+                    <span class="skill-tag">Access Review</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Automation & Tools</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">PowerShell</span>
+                    <span class="skill-tag">ServiceNow</span>
+                    <span class="skill-tag">Automation</span>
+                    <span class="skill-tag">Troubleshooting</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="certifications" id="certifications">
+    <div class="container">
+        <h2 class="section-title">Certifications</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <h3>Google Cloud</h3>
+                <p>Cloud Engineering Essentials</p>
+                <span class="cert-issuer">Google</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="container">
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="contact-text">Interested in IAM solutions, automation, or access governance? Let's talk.</p>
+        <a href="mailto:oficialghj@gmail.com" class="btn btn-primary">Send me a message!</a>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>&copy; 2026 Gabriel Henrique. All rights reserved.</p>
+</footer>
+    </template>
+
+    <template id="page-template-pt">
+<section class="hero" id="hero">
+    <div class="hero-content">
+        <p class="hero-greeting">Ola, eu sou</p>
+        <h1 class="hero-name">Gabriel</h1>
+        <h2 class="hero-title">Analista de Identity & Access Management</h2>
+        <p class="hero-subtitle">Analista de Sistemas com foco em IAM, Active Directory, Entra ID, Automacao com PowerShell e Governanca de Acesso em ambientes corporativos.</p>
+        <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Entre em Contato</a>
+            <a href="#experience" class="btn btn-secondary">Ver Experiencia</a>
+        </div>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="container">
+        <h2 class="section-title">Sobre Mim</h2>
+        <div class="about-content">
+            <p>Sou Analista de Sistemas com foco em Identity and Access Management (IAM), Active Directory, Entra ID/Azure AD, automacao com PowerShell e suporte a ambientes corporativos de infraestrutura e seguranca.</p>
+            <p>Minha atuacao envolve rotinas de administracao e analise de acessos, validacao de grupos no Active Directory, movimentacao de usuarios entre OUs, criacao e bloqueio de contas, analise de atributos, verificacao de status de contas, troubleshooting de autenticacao, permissoes, acesso a servidores e integracao entre Entra ID e AD on-premises.</p>
+            <p>Tenho experiencia pratica com ServiceNow, especialmente no tratamento de chamados, analise de solicitacoes, validacao de regras de acesso e automacao de fluxos operacionais. Desenvolvi uma aplicacao interna que utiliza dados de chamados do ServiceNow para orientar acoes, executar comandos PowerShell, reduzir tarefas manuais e auxiliar no encerramento de tickets com mais eficiencia.</p>
+            <p>Meu diferencial esta na combinacao entre operacao, automacao e visao de governanca. Busco transformar processos repetitivos em solucoes mais organizadas, seguras e escalaveis, aplicando PowerShell, boas praticas de IAM, analise de grupos, permissoes, estrutura de OUs e principios de menor privilegio.</p>
+        </div>
+    </div>
+</section>
+
+<section class="experience" id="experience">
+    <div class="container">
+        <h2 class="section-title">Experiencia Profissional</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <h3>Analista de Gestao de Identidades</h3>
+                        <span class="timeline-date">2023 - Presente</span>
+                    </div>
+                    <h4 class="timeline-company">DXC Technology</h4>
+                    <ul class="timeline-details">
+                        <li>Administracao e governanca de identidades no Active Directory e Entra ID</li>
+                        <li>Automacao com PowerShell para provisionamento, desprovisionamento e revisao de acessos</li>
+                        <li>Analise de chamados ServiceNow e automacao de fluxos operacionais</li>
+                        <li>Gestao de grupos de seguranca, estrutura de OUs e aplicacao do menor privilegio</li>
+                        <li>Desenvolvimento de ferramenta interna integrando dados do ServiceNow com execucao PowerShell</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <h3>Estagiario de Gestao de Acessos</h3>
+                        <span class="timeline-date">2021 - 2023</span>
+                    </div>
+                    <h4 class="timeline-company">DXC Technology</h4>
+                    <ul class="timeline-details">
+                        <li>Gestao de infraestrutura IAM para mais de 5.000 usuarios</li>
+                        <li>Criacao, bloqueio e gestao de atributos de contas no Active Directory</li>
+                        <li>Troubleshooting de autenticacao e suporte a acesso a servidores</li>
+                        <li>Validacao de solicitacoes de acesso e gestao de membros de grupos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="skills" id="skills">
+    <div class="container">
+        <h2 class="section-title">Habilidades Tecnicas</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Identidade & Acesso</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Active Directory</span>
+                    <span class="skill-tag">Entra ID / Azure AD</span>
+                    <span class="skill-tag">IAM</span>
+                    <span class="skill-tag">Governanca de Acesso</span>
+                    <span class="skill-tag">Provisionamento de Usuarios</span>
+                    <span class="skill-tag">Desprovisionamento de Usuarios</span>
+                    <span class="skill-tag">Menor Privilegio</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Infraestrutura & Seguranca</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Grupos de Seguranca</span>
+                    <span class="skill-tag">Membros de Grupo</span>
+                    <span class="skill-tag">OUs</span>
+                    <span class="skill-tag">Acesso a Servidores</span>
+                    <span class="skill-tag">Permissoes</span>
+                    <span class="skill-tag">Revisao de Acesso</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Automacao & Ferramentas</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">PowerShell</span>
+                    <span class="skill-tag">ServiceNow</span>
+                    <span class="skill-tag">Automacao</span>
+                    <span class="skill-tag">Troubleshooting</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="certifications" id="certifications">
+    <div class="container">
+        <h2 class="section-title">Certificacoes</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <h3>Google Cloud</h3>
+                <p>Cloud Engineering Essentials</p>
+                <span class="cert-issuer">Google</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="container">
+        <h2 class="section-title">Vamos Conversar</h2>
+        <p class="contact-text">Interessado em solucoes de IAM, automacao ou governanca de acesso? Vamos conversar.</p>
+        <a href="mailto:oficialghj@gmail.com" class="btn btn-primary">Envie uma mensagem!</a>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>&copy; 2026 Gabriel Henrique. Todos os direitos reservados.</p>
+</footer>
+    </template>
+
+    <template id="page-template-es">
+<section class="hero" id="hero">
+    <div class="hero-content">
+        <p class="hero-greeting">Hola, soy</p>
+        <h1 class="hero-name">Gabriel</h1>
+        <h2 class="hero-title">Analista de Identity & Access Management</h2>
+        <p class="hero-subtitle">Analista de Sistemas enfocado en IAM, Active Directory, Entra ID, Automatizacion con PowerShell y Gobernanza de Acceso en entornos corporativos.</p>
+        <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Contactar</a>
+            <a href="#experience" class="btn btn-secondary">Ver Experiencia</a>
+        </div>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="container">
+        <h2 class="section-title">Sobre Mi</h2>
+        <div class="about-content">
+            <p>Soy Analista de Sistemas con enfoque en Identity and Access Management (IAM), Active Directory, Entra ID/Azure AD, automatizacion con PowerShell y soporte a entornos corporativos de infraestructura y seguridad.</p>
+            <p>Mi actuacion involucra rutinas de administracion y analisis de accesos, validacion de grupos en Active Directory, movimiento de usuarios entre OUs, creacion y bloqueo de cuentas, analisis de atributos, verificacion de estado de cuentas, troubleshooting de autenticacion, permisos, acceso a servidores e integracion entre Entra ID y AD on-premises.</p>
+            <p>Tengo experiencia practica con ServiceNow, especialmente en el tratamiento de tickets, analisis de solicitudes, validacion de reglas de acceso y automatizacion de flujos operacionales. Desarrolle una aplicacion interna que utiliza datos de tickets de ServiceNow para orientar acciones, ejecutar comandos PowerShell, reducir tareas manuales y ayudar en el cierre de tickets con mas eficiencia.</p>
+            <p>Mi diferencial esta en la combinacion entre operacion, automatizacion y vision de gobernanza. Busco transformar procesos repetitivos en soluciones mas organizadas, seguras y escalables, aplicando PowerShell, buenas practicas de IAM, analisis de grupos, permisos, estructura de OUs y principios de menor privilegio.</p>
+        </div>
+    </div>
+</section>
+
+<section class="experience" id="experience">
+    <div class="container">
+        <h2 class="section-title">Experiencia Profesional</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <h3>Analista de Gestion de Identidades</h3>
+                        <span class="timeline-date">2023 - Presente</span>
+                    </div>
+                    <h4 class="timeline-company">DXC Technology</h4>
+                    <ul class="timeline-details">
+                        <li>Administracion y gobernanza de identidades en Active Directory y Entra ID</li>
+                        <li>Automatizacion con PowerShell para aprovisionamiento, desaprovisionamiento y revision de accesos</li>
+                        <li>Analisis de tickets ServiceNow y automatizacion de flujos operacionales</li>
+                        <li>Gestion de grupos de seguridad, estructura de OUs y aplicacion del menor privilegio</li>
+                        <li>Desarrollo de herramienta interna integrando datos de ServiceNow con ejecucion PowerShell</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <h3>Pasante de Gestion de Accesos</h3>
+                        <span class="timeline-date">2021 - 2023</span>
+                    </div>
+                    <h4 class="timeline-company">DXC Technology</h4>
+                    <ul class="timeline-details">
+                        <li>Gestion de infraestructura IAM para mas de 5.000 usuarios</li>
+                        <li>Creacion, bloqueo y gestion de atributos de cuentas en Active Directory</li>
+                        <li>Troubleshooting de autenticacion y soporte de acceso a servidores</li>
+                        <li>Validacion de solicitudes de acceso y gestion de miembros de grupos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="skills" id="skills">
+    <div class="container">
+        <h2 class="section-title">Habilidades Tecnicas</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Identidad & Acceso</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Active Directory</span>
+                    <span class="skill-tag">Entra ID / Azure AD</span>
+                    <span class="skill-tag">IAM</span>
+                    <span class="skill-tag">Gobernanza de Acceso</span>
+                    <span class="skill-tag">Aprovisionamiento de Usuarios</span>
+                    <span class="skill-tag">Desaprovisionamiento de Usuarios</span>
+                    <span class="skill-tag">Menor Privilegio</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Infraestructura & Seguridad</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Grupos de Seguridad</span>
+                    <span class="skill-tag">Miembros de Grupo</span>
+                    <span class="skill-tag">OUs</span>
+                    <span class="skill-tag">Acceso a Servidores</span>
+                    <span class="skill-tag">Permisos</span>
+                    <span class="skill-tag">Revision de Acceso</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Automatizacion & Herramientas</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">PowerShell</span>
+                    <span class="skill-tag">ServiceNow</span>
+                    <span class="skill-tag">Automatizacion</span>
+                    <span class="skill-tag">Troubleshooting</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="certifications" id="certifications">
+    <div class="container">
+        <h2 class="section-title">Certificaciones</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <h3>Google Cloud</h3>
+                <p>Cloud Engineering Essentials</p>
+                <span class="cert-issuer">Google</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="container">
+        <h2 class="section-title">Conectemos</h2>
+        <p class="contact-text">Interesado en soluciones de IAM, automatizacion o gobernanza de acceso? Hablemos.</p>
+        <a href="mailto:oficialghj@gmail.com" class="btn btn-primary">Enviame un mensaje!</a>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>&copy; 2026 Gabriel Henrique. Todos los derechos reservados.</p>
+</footer>
+    </template>
+
+    <script src="./scripts.js"></script>
+</body>
+</html>
