@@ -224,19 +224,20 @@ body.menu-open {
     }
 
     .nav-links {
-        /* Full-screen overlay drawer */
         position: fixed;
-        inset: 0;
-        top: 57px; /* height of navbar */
-        background: rgba(15, 20, 25, 0.98);
-        backdrop-filter: blur(12px);
+        top: 57px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--color-bg);
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 2.5rem;
         transform: translateX(100%);
         transition: transform 0.3s ease;
-        z-index: 999;
+        z-index: 998;
+        overflow-y: auto;
     }
 
     .nav-links.open {
@@ -244,7 +245,8 @@ body.menu-open {
     }
 
     .nav-links a {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
+        font-weight: 500;
         color: var(--color-text);
     }
 
