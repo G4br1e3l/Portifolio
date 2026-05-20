@@ -1,5 +1,3 @@
-// This software was partially written using Suggestions from GitHub Copilot.
-
 (function () {
     'use strict';
 
@@ -96,7 +94,7 @@
         });
 
         // Load section styles on demand then inject page content
-        loadStylesheet('./css/sections.css').then(function () {
+        loadStylesheet('./css/sections.css?v=20260520').then(function () {
             return loadPage(lang);
         }).then(function (html) {
             contentContainer.innerHTML = html;
