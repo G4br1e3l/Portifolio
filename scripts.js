@@ -79,6 +79,43 @@
         });
     }
 
+    // ── Mobile menu helpers ────────────────────────────────────────────────
+    function closeMobileMenu() {
+        var toggle = document.querySelector('.nav-toggle');
+        var navLinks = document.querySelector('.nav-links');
+        if (!toggle || !navLinks) return;
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        navLinks.classList.remove('open');
+        document.body.classList.remove('menu-open');
+    }
+
+    function initMobileMenu() {
+        var toggle = document.querySelector('.nav-toggle');
+        var navLinks = document.querySelector('.nav-links');
+        if (!toggle || !navLinks) return;
+
+        toggle.addEventListener('click', function () {
+            var isOpen = navLinks.classList.toggle('open');
+            toggle.classList.toggle('open', isOpen);
+            toggle.setAttribute('aria-expanded', String(isOpen));
+            document.body.classList.toggle('menu-open', isOpen);
+        });
+
+        // Close when a nav link is tapped
+        navLinks.addEventListener('click', function (e) {
+            if (e.target.tagName === 'A') {
+                closeMobileMenu();
+            }
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeMobileMenu();
+        });
+    }
+    // ──────────────────────────────────────────────────────────────────────
+
     function setLanguage(lang) {
         if (SUPPORTED_LANGS.indexOf(lang) === -1) {
             lang = DEFAULT_LANG;
@@ -87,6 +124,9 @@
         document.documentElement.setAttribute('lang', lang);
         localStorage.setItem('portfolio-lang', lang);
         updateNavigationLabels(lang);
+
+        // Close mobile menu when language is switched
+        closeMobileMenu();
 
         // Update active button
         document.querySelectorAll('.lang-btn').forEach(function (btn) {
@@ -130,6 +170,9 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         contentContainer = document.getElementById('page-content');
+
+        // Mobile menu
+        initMobileMenu();
 
         // Language switcher
         document.querySelectorAll('.lang-btn').forEach(function (btn) {
