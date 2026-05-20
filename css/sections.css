@@ -1,4 +1,4 @@
-/* Hero */
+/* ── Hero ── */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -46,7 +46,7 @@
     flex-wrap: wrap;
 }
 
-/* Sections */
+/* ── Sections ── */
 section {
     padding: 5rem 0;
 }
@@ -70,7 +70,7 @@ section {
     border-radius: 2px;
 }
 
-/* About */
+/* ── About ── */
 .about-content p {
     color: var(--color-text-secondary);
     margin-bottom: 1.25rem;
@@ -81,7 +81,7 @@ section {
     margin-bottom: 0;
 }
 
-/* Timeline */
+/* ── Timeline ── */
 .timeline {
     position: relative;
     padding-left: 2rem;
@@ -168,7 +168,7 @@ section {
     background: var(--color-text-muted);
 }
 
-/* Skills */
+/* ── Skills ── */
 .skills-grid {
     display: grid;
     gap: 2rem;
@@ -198,7 +198,7 @@ section {
     font-weight: 500;
 }
 
-/* Certifications */
+/* ── Certifications ── */
 .cert-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -237,7 +237,7 @@ section {
     letter-spacing: 0.5px;
 }
 
-/* Contact */
+/* ── Contact ── */
 .contact {
     text-align: center;
 }
@@ -253,7 +253,7 @@ section {
     font-size: 1rem;
 }
 
-/* Footer */
+/* ── Footer ── */
 .footer {
     text-align: center;
     padding: 2rem;
@@ -262,21 +262,56 @@ section {
     font-size: 0.8rem;
 }
 
-/* Responsive - Sections */
+/* ── Responsive: Sections ── */
 @media (max-width: 768px) {
     .hero {
-        padding: 5rem 1.5rem 3rem;
+        min-height: 100svh; /* safer on mobile browsers with dynamic toolbars */
+        padding: 5rem 1.25rem 3rem;
+        align-items: flex-start;
+        padding-top: 6rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        text-align: center;
     }
 
     section {
         padding: 3.5rem 0;
     }
 
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .timeline {
+        padding-left: 1.5rem;
+    }
+
     .timeline-header {
         flex-direction: column;
+        gap: 0.2rem;
+    }
+
+    .timeline-header h3 {
+        font-size: 1rem;
     }
 
     .cert-grid {
         grid-template-columns: 1fr;
+    }
+
+    .contact-text {
+        font-size: 0.95rem;
+        padding: 0 0.5rem;
+    }
+
+    .contact .btn {
+        width: 100%;
+        text-align: center;
     }
 }
